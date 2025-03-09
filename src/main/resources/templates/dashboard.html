@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Dashboard</title>
+</head>
+<body>
+
+<p th:if="${#authentication != null}">Bienvenido, <span th:text="${#authentication.name}"></span></p>
+<p th:if="${#authorization.expression('hasRole(''ADMIN'')')}">Eres Administrador</p>
+<p th:if="${#authorization.expression('hasRole(''USER'')')}">Eres Usuario</p>
+
+<form th:action="@{/logout}" method="post">
+  <button type="submit">Cerrar sesión</button>
+</form>
+</body>
+</html>
